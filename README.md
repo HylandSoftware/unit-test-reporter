@@ -3,7 +3,7 @@ Create an annotation of the build information and also list first n failed tests
 
 Example
 ```yaml
-  - uses: edwinf/unit-nunit-reporter@v1.0.0
+  - uses: HylandSoftware/unit-nunit-reporter
       if: always()
       with: 
         path: 'test-resuls/*.xml'
