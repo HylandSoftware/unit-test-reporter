@@ -63,7 +63,7 @@ export default class TrxParser extends UnitTestResultParser {
       )
     } else {
       return new Annotation(
-        '',
+        testResult.testName,
         0,
         0,
         0,
