@@ -30422,14 +30422,15 @@ function generateSummary(annotation) {
 }
 async function uploadResults(accessToken, title, numFailures, results) {
     const octokit = new github_1.GitHub(accessToken);
-    const summary = results.failed > 0
-        ? `${results.failed} tests failed`
-        : `${results.passed} tests passed`;
-    let details = results.failed === 0
-        ? `** ${results.passed} tests passed**`
+    const summary = results.resultCounts.failed > 0
+        ? `${results.resultCounts.failed} tests failed`
+        : `${results.resultCounts.passed} tests passed`;
+    let details = results.resultCounts.failed === 0
+        ? `** ${results.resultCounts.passed} tests passed**`
         : `
-**${results.passed} tests passed**
-**${results.failed} tests failed**
+**${results.resultCounts.total} total tests**
+**${results.resultCounts.passed} tests passed**
+**${results.resultCounts.failed} tests failed**
 `;
     for (const ann of results.annotations) {
         const annStr = generateSummary(ann);
@@ -30449,7 +30450,7 @@ async function uploadResults(accessToken, title, numFailures, results) {
         owner: github_1.context.repo.owner,
         repo: github_1.context.repo.repo,
         status: 'completed',
-        conclusion: results.failed > 0 || results.passed === 0 ? 'failure' : 'success',
+        conclusion: results.resultCounts.failed > 0 || results.resultCounts.passed === 0 ? 'failure' : 'success',
         output: {
             title,
             summary,

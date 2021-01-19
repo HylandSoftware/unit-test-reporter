@@ -1,5 +1,6 @@
 import {GitHub, context} from '@actions/github'
 import {Annotation} from './types/annotation'
+import {TestResult} from './types/test-result'
 
 function generateSummary(annotation: Annotation): string {
   return `* ${annotation.title}\n   ${annotation.message}`
@@ -9,21 +10,22 @@ export async function uploadResults(
   accessToken: string,
   title: string,
   numFailures: number,
-  results: any
+  results: TestResult
 ): Promise<void> {
   const octokit = new GitHub(accessToken)
 
   const summary =
-    results.failed > 0
-      ? `${results.failed} tests failed`
-      : `${results.passed} tests passed`
+    results.resultCounts.failed > 0
+      ? `${results.resultCounts.failed} tests failed`
+      : `${results.resultCounts.passed} tests passed`
 
   let details =
-    results.failed === 0
-      ? `** ${results.passed} tests passed**`
+    results.resultCounts.failed === 0
+      ? `** ${results.resultCounts.passed} tests passed**`
       : `
-**${results.passed} tests passed**
-**${results.failed} tests failed**
+**${results.resultCounts.total} total tests**
+**${results.resultCounts.passed} tests passed**
+**${results.resultCounts.failed} tests failed**
 `
 
   for (const ann of results.annotations) {
@@ -45,7 +47,9 @@ export async function uploadResults(
     repo: context.repo.repo,
     status: 'completed',
     conclusion:
-      results.failed > 0 || results.passed === 0 ? 'failure' : 'success',
+      results.resultCounts.failed > 0 || results.resultCounts.passed === 0
+        ? 'failure'
+        : 'success',
     output: {
       title,
       summary,
