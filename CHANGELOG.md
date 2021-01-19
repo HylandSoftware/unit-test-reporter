@@ -1,3 +1,10 @@
+## [1.0.3](https://github.com/HylandSoftware/unit-test-reporter/compare/v1.0.2...v1.0.3) (2021-01-19)
+
+
+### Bug Fixes
+
+* fix bad annotation request ([#3](https://github.com/HylandSoftware/unit-test-reporter/issues/3)) ([a839915](https://github.com/HylandSoftware/unit-test-reporter/commit/a839915b74317f1307e42204b85661fc7cf1f569))
+
 ## [1.0.2](https://github.com/HylandSoftware/unit-test-reporter/compare/v1.0.1...v1.0.2) (2021-01-19)
 
 
