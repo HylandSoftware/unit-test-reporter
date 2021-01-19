@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TestRun id="7decab42-5a19-44d0-81c2-08c932fa08c3" name="@fv-az183-358 2021-01-19 04:27:39" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <Times creation="2021-01-19T04:27:39.7094377+00:00" queuing="2021-01-19T04:27:39.7094378+00:00" start="2021-01-19T04:27:37.1455773+00:00" finish="2021-01-19T04:27:40.2215161+00:00" />
+  <TestSettings name="default" id="ac7b2b2c-07d9-4bf5-8f94-05cc043f34ef">
+    <Deployment runDeploymentRoot="_fv-az183-358_2021-01-19_04_27_39" />
+  </TestSettings>
+  <Results>
+    <UnitTestResult executionId="815d391b-2ad7-4697-89c1-4124b178ae1a" testId="39169776-74f6-150e-00b1-b88c899a890f" testName="code.UnitTests.test.tes1" computerName="fv-az183-358" duration="00:00:00.0010000" startTime="2021-01-19T04:27:39.9143484+00:00" endTime="2021-01-19T04:27:39.9143488+00:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="NotExecuted" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="815d391b-2ad7-4697-89c1-4124b178ae1a">
+      <Output>
+        <StdOut>Update test to assert sub selection set validation</StdOut>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="e00adfb4-f138-4751-aee8-4aa7b3999c72" testId="8779d011-b681-dedf-71c4-e90bc73caa5f" testName="code.UnitTests.test.test2" computerName="fv-az183-358" duration="00:00:00.0255833" startTime="2021-01-19T04:27:39.9952615+00:00" endTime="2021-01-19T04:27:39.9952622+00:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="e00adfb4-f138-4751-aee8-4aa7b3999c72" />
+  </Results>
+  <TestDefinitions>
+    <UnitTest name="code.UnitTests.test.test1" storage="/home/runner/work/code/code/test/code.unittests/bin/release/netcoreapp3.1/code.unittests.dll" id="c5cf1914-0a89-54c3-89d3-b0d22eb81cb7">
+      <Execution id="f3d729e3-c189-4e2f-bfaa-1cf0d3673140" />
+      <TestMethod codeBase="/home/runner/work/code/code/test/code.UnitTests/bin/Release/netcoreapp3.1/code.UnitTests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="code.UnitTests.test" name="code.UnitTests.test.test1" />
+    </UnitTest>
+    <UnitTest name="code.UnitTests.test.test2" storage="/home/runner/work/code/code/test/code.unittests/bin/release/netcoreapp3.1/code.unittests.dll" id="6dbff971-44b5-8039-125f-e4b5ebee452c">
+      <Execution id="17c0b84a-56fb-483f-b845-a34ebdce6c80" />
+      <TestMethod codeBase="/home/runner/work/code/code/test/code.UnitTests/bin/Release/netcoreapp3.1/code.UnitTests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="code.UnitTests.test" name="code.UnitTests.test.test2" />
+    </UnitTest>
+  </TestDefinitions>
+  <TestEntries>
+    <TestEntry testId="39169776-74f6-150e-00b1-b88c899a890f" executionId="815d391b-2ad7-4697-89c1-4124b178ae1a" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="8779d011-b681-dedf-71c4-e90bc73caa5f" executionId="e00adfb4-f138-4751-aee8-4aa7b3999c72" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+  </TestEntries>
+  <ResultSummary outcome="Completed">
+    <Counters total="2" executed="1" passed="1" failed="0" error="0" timeout="0" aborted="0" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="0" disconnected="0" warning="0" completed="0" inProgress="0" pending="0" />
+    <Output>
+      <StdOut>[xUnit.net 00:00:00.00] xUnit.net VSTest Adapter v2.4.1 (64-bit .NET Core 3.1.10)
+</StdOut>
+    </Output>
+  </ResultSummary>
+</TestRun>

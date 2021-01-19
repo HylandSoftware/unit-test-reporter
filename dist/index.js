@@ -86,7 +86,7 @@ class TrxParser extends parser_1.UnitTestResultParser {
                     : 'notice', `Failed test ${testResult.testName}`, message, stackTrace.substring(0, 65536));
         }
         else {
-            return new annotation_1.Annotation('', 0, 0, 0, 0, testResult.outcome === 'Failed'
+            return new annotation_1.Annotation(testResult.testName, 0, 0, 0, 0, testResult.outcome === 'Failed'
                 ? 'failure'
                 : testResult.outcome === 'Warning'
                     ? 'warning'
