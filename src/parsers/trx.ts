@@ -35,31 +35,49 @@ export default class TrxParser extends UnitTestResultParser {
   }
 
   private resultAnnotations(testResult: any): Annotation {
-    const errorInfo = testResult.Output.ErrorInfo
-    let [filename, lineno] = ['unknown', 0]
-    const stackTrace = errorInfo.StackTrace || ''
-    if (stackTrace.length > 0) {
-      ;[filename, lineno] = this.getLocation(errorInfo.StackTrace)
+    if (testResult.Output.ErrorInfo) {
+      const errorInfo = testResult.Output.ErrorInfo
+      let [filename, lineno] = ['unknown', 0]
+      const stackTrace = errorInfo.StackTrace || ''
+      if (stackTrace.length > 0) {
+        ;[filename, lineno] = this.getLocation(errorInfo.StackTrace)
+      }
+
+      const sanitizedFilename = this.sanitizePath(filename)
+      const message = errorInfo.Message
+
+      return new Annotation(
+        sanitizedFilename,
+        lineno,
+        lineno,
+        0,
+        0,
+        testResult.outcome === 'Failed'
+          ? 'failure'
+          : testResult.outcome === 'Warning'
+          ? 'warning'
+          : 'notice',
+        `Failed test ${testResult.testName}`,
+        message,
+        stackTrace.substring(0, 65536)
+      )
+    } else {
+      return new Annotation(
+        '',
+        0,
+        0,
+        0,
+        0,
+        testResult.outcome === 'Failed'
+          ? 'failure'
+          : testResult.outcome === 'Warning'
+          ? 'warning'
+          : 'notice',
+        testResult.testName,
+        testResult.Output.StdOut,
+        ''
+      )
     }
-
-    const sanitizedFilename = this.sanitizePath(filename)
-    const message = errorInfo.Message
-
-    return new Annotation(
-      sanitizedFilename,
-      lineno,
-      lineno,
-      0,
-      0,
-      testResult.outcome === 'Failed'
-        ? 'failure'
-        : testResult.outcome === 'Warning'
-        ? 'warning'
-        : 'notice',
-      `Failed test ${testResult.testName}`,
-      message,
-      stackTrace.substring(0, 65536)
-    )
   }
 
   private getResults(results: any): any[] {
