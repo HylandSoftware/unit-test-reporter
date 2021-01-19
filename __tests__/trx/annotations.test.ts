@@ -24,7 +24,7 @@ test('parse Results', async () => {
   expect(results.totalduration).toBe(779)
 
   const annotation = results.annotations[0]
-  expect(annotation.path).toContain('c:/code/XUnitTestProject1/UnitTest1.cs')
+  expect(annotation.path).toContain('XUnitTestProject1/UnitTest1.cs')
 
   expect(annotation.start_line).toBe(12)
   expect(annotation.end_line).toBe(12)
@@ -34,5 +34,20 @@ test('parse Results', async () => {
   expect(annotation.annotation_level).toBe('failure')
   expect(annotation.message).toBe(
     `Assert.True() Failure\r${EOL}Expected: True\r${EOL}Actual:   False`
+  )
+})
+
+test('parse Results with a not executed', async () => {
+  var testPath = path.join('__tests__', 'trx', 'not-executed.trx')
+  const data = await fs.readFile(testPath, 'utf8')
+
+  const parser = new trxParser()
+  const results = await parser['parseResults'](data)
+
+  expect(results.resultCounts.total).toBe(2)
+  expect(results.resultCounts.passed).toBe(1)
+  const annotation = results.annotations[0]
+  expect(annotation.message).toBe(
+    'Update test to assert sub selection set validation'
   )
 })
