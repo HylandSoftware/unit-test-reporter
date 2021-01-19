@@ -21,7 +21,8 @@ export async function uploadResults(
 
   let details =
     results.resultCounts.failed === 0
-      ? `** ${results.resultCounts.passed} tests passed**`
+      ? `**${results.resultCounts.total} total tests**
+** ${results.resultCounts.passed} tests passed**`
       : `
 **${results.resultCounts.total} total tests**
 **${results.resultCounts.passed} tests passed**

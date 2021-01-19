@@ -30426,7 +30426,8 @@ async function uploadResults(accessToken, title, numFailures, results) {
         ? `${results.resultCounts.failed} tests failed`
         : `${results.resultCounts.passed} tests passed`;
     let details = results.resultCounts.failed === 0
-        ? `** ${results.resultCounts.passed} tests passed**`
+        ? `**${results.resultCounts.total} total tests**
+** ${results.resultCounts.passed} tests passed**`
         : `
 **${results.resultCounts.total} total tests**
 **${results.resultCounts.passed} tests passed**
@@ -30450,7 +30451,9 @@ async function uploadResults(accessToken, title, numFailures, results) {
         owner: github_1.context.repo.owner,
         repo: github_1.context.repo.repo,
         status: 'completed',
-        conclusion: results.resultCounts.failed > 0 || results.resultCounts.passed === 0 ? 'failure' : 'success',
+        conclusion: results.resultCounts.failed > 0 || results.resultCounts.passed === 0
+            ? 'failure'
+            : 'success',
         output: {
             title,
             summary,
