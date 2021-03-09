@@ -1,3 +1,10 @@
+## [1.0.4](https://github.com/HylandSoftware/unit-test-reporter/compare/v1.0.3...v1.0.4) (2021-03-09)
+
+
+### Bug Fixes
+
+* fix major release tagging ([f797f73](https://github.com/HylandSoftware/unit-test-reporter/commit/f797f738d0f95b35d09105f2aba15e816fd18296))
+
 ## [1.0.3](https://github.com/HylandSoftware/unit-test-reporter/compare/v1.0.2...v1.0.3) (2021-01-19)
 
 
