@@ -1,3 +1,10 @@
+# [1.1.0](https://github.com/HylandSoftware/unit-test-reporter/compare/v1.0.4...v1.1.0) (2021-03-19)
+
+
+### Features
+
+* add junit parsing, update to current styling / npm packages ([#4](https://github.com/HylandSoftware/unit-test-reporter/issues/4)) ([c708d94](https://github.com/HylandSoftware/unit-test-reporter/commit/c708d94bff9336e39721d144f273098db42730ee))
+
 ## [1.0.4](https://github.com/HylandSoftware/unit-test-reporter/compare/v1.0.3...v1.0.4) (2021-03-09)
 
 
