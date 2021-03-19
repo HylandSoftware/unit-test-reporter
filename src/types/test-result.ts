@@ -1,32 +1,32 @@
-import {Annotation} from './annotation'
+import { Annotation } from './annotation';
 
 export class TestResult {
-  public constructor(
-    public readonly resultCounts: TestResultCounts,
-    public readonly totalduration: number,
-    public readonly annotations: Annotation[]
+  constructor(
+    readonly resultCounts: TestResultCounts,
+    readonly totalduration: number,
+    readonly annotations: Annotation[]
   ) {}
 
-  public merge(testResult: TestResult): TestResult {
+  merge(testResult: TestResult): TestResult {
     return new TestResult(
       this.resultCounts.merge(testResult.resultCounts),
       this.totalduration + testResult.totalduration,
       this.annotations.concat(testResult.annotations)
-    )
+    );
   }
 }
 
 export class TestResultCounts {
-  public constructor(
-    public readonly total: number,
-    public readonly passed: number,
-    public readonly warning: number,
-    public readonly skipped: number,
-    public readonly failed: number,
-    public readonly timeout: number
+  constructor(
+    readonly total: number,
+    readonly passed: number,
+    readonly warning: number,
+    readonly skipped: number,
+    readonly failed: number,
+    readonly timeout: number
   ) {}
 
-  public merge(testResultCounts: TestResultCounts): TestResultCounts {
+  merge(testResultCounts: TestResultCounts): TestResultCounts {
     return new TestResultCounts(
       this.total + testResultCounts.total,
       this.passed + testResultCounts.passed,
@@ -34,6 +34,6 @@ export class TestResultCounts {
       this.skipped + testResultCounts.skipped,
       this.failed + testResultCounts.failed,
       this.timeout + testResultCounts.timeout
-    )
+    );
   }
 }

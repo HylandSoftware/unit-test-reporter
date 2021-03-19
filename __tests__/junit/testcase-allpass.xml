@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="jest tests" tests="10" failures="0" time="14.312">
+  <testsuite name="libs\library\src\lib\details\views\details\details.component.spec.ts/Details" errors="0" failures="0" skipped="0" timestamp="2021-03-18T19:18:40" time="7.871" tests="1">
+    <testcase classname="AccountDetailsComponent.should create" name="AccountDetailsComponent should create" time="0.272">
+    </testcase>
+  </testsuite>
+  <testsuite name="libs\library\src\lib\details\views\details\details.component.spec.ts/Details" errors="0" failures="0" skipped="0" timestamp="2021-03-18T19:18:40" time="7.936" tests="1">
+    <testcase classname="Component.should create" name="Component should create" time="0.285">
+    </testcase>
+  </testsuite>
+</testsuites>

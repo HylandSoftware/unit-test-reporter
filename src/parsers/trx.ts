@@ -1,25 +1,26 @@
-import {parseStringPromise} from 'xml2js'
-import {Annotation} from '../types/annotation'
-import {TestResult, TestResultCounts} from '../types/test-result'
-import {UnitTestResultParser} from './parser'
+import { parseStringPromise } from 'xml2js';
+import { Annotation } from '../types/annotation';
+import { TestResult, TestResultCounts } from '../types/test-result';
+import { UnitTestResultParser } from './parser';
 
+/* eslint-disable @typescript-eslint/no-explicit-any */
 export default class TrxParser extends UnitTestResultParser {
   protected async parseResults(testData: string): Promise<TestResult> {
     const parsedXml: any = await parseStringPromise(testData, {
       trim: true,
       mergeAttrs: true,
-      explicitArray: false
-    })
+      explicitArray: false,
+    });
 
-    const testRun = parsedXml['TestRun']
+    const testRun = parsedXml['TestRun'];
 
-    const results = this.getResults(testRun)
-    const failedResults = results.filter(r => r.outcome !== 'Passed')
+    const results = this.getResults(testRun);
+    const failedResults = results.filter((r) => r.outcome !== 'Passed');
 
-    const annotations = failedResults.map(s => this.resultAnnotations(s))
+    const annotations = failedResults.map((s) => this.resultAnnotations(s));
     const duration =
       new Date(testRun.Times.finish).valueOf() -
-      new Date(testRun.Times.start).valueOf()
+      new Date(testRun.Times.start).valueOf();
     return new TestResult(
       new TestResultCounts(
         parseInt(testRun.ResultSummary.Counters.total),
@@ -31,20 +32,20 @@ export default class TrxParser extends UnitTestResultParser {
       ),
       duration,
       annotations
-    )
+    );
   }
 
   private resultAnnotations(testResult: any): Annotation {
     if (testResult.Output.ErrorInfo) {
-      const errorInfo = testResult.Output.ErrorInfo
-      let [filename, lineno] = ['unknown', 0]
-      const stackTrace = errorInfo.StackTrace || ''
+      const errorInfo = testResult.Output.ErrorInfo;
+      let [filename, lineno] = ['unknown', 0];
+      const stackTrace = errorInfo.StackTrace || '';
       if (stackTrace.length > 0) {
-        ;[filename, lineno] = this.getLocation(errorInfo.StackTrace)
+        [filename, lineno] = this.getLocation(errorInfo.StackTrace);
       }
 
-      const sanitizedFilename = this.sanitizePath(filename)
-      const message = errorInfo.Message
+      const sanitizedFilename = this.sanitizePath(filename);
+      const message = errorInfo.Message;
 
       return new Annotation(
         sanitizedFilename,
@@ -60,7 +61,7 @@ export default class TrxParser extends UnitTestResultParser {
         `Failed test ${testResult.testName}`,
         message,
         stackTrace.substring(0, 65536)
-      )
+      );
     } else {
       return new Annotation(
         testResult.testName,
@@ -76,23 +77,23 @@ export default class TrxParser extends UnitTestResultParser {
         testResult.testName,
         testResult.Output.StdOut,
         ''
-      )
+      );
     }
   }
 
   private getResults(results: any): any[] {
-    let unitTestResults: any = []
+    let unitTestResults: any = [];
 
     if (results.Results && results.Results.UnitTestResult) {
-      const utrs = results.Results.UnitTestResult
+      const utrs = results.Results.UnitTestResult;
 
       if (Array.isArray(utrs)) {
-        unitTestResults = unitTestResults.concat(utrs)
+        unitTestResults = unitTestResults.concat(utrs);
       } else {
-        unitTestResults.push(utrs)
+        unitTestResults.push(utrs);
       }
     }
 
-    return unitTestResults
+    return unitTestResults;
   }
 }
