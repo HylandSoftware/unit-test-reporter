@@ -6,7 +6,7 @@ Example
   - uses: HylandSoftware/unit-nunit-reporter
       if: always()
       with: 
-        path: 'test-resuls/*.xml'
+        path: 'test-results/*.xml'
         reportType: 'trx'
         access-token: ${{secrets.GITHUB_TOKEN}}
 ```
