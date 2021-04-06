@@ -1,3 +1,10 @@
+## [1.1.1](https://github.com/HylandSoftware/unit-test-reporter/compare/v1.1.0...v1.1.1) (2021-04-06)
+
+
+### Bug Fixes
+
+* fix release pipeline to properly move major version tag ([#12](https://github.com/HylandSoftware/unit-test-reporter/issues/12)) ([4a0fa09](https://github.com/HylandSoftware/unit-test-reporter/commit/4a0fa09221d7a0d47dc69848f186e7036202adbe))
+
 # [1.1.0](https://github.com/HylandSoftware/unit-test-reporter/compare/v1.0.4...v1.1.0) (2021-03-19)
 
 
