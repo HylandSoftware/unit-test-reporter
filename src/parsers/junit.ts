@@ -71,9 +71,10 @@ export default class JunitParser extends UnitTestResultParser {
       explicitArray: false,
     });
 
-    const testRun = parsedXml['testsuites'];
-
-    const testSuites = this.getTestSuites(testRun);
+    // Either top level test suites or top level test suite.
+    const testRuns = parsedXml.hasOwnProperty('testsuites') ? parsedXml['testsuites'] : parsedXml;
+   
+    const testSuites = this.getTestSuites(testRuns);
 
     let allResults = new TestResultCounts(0, 0, 0, 0, 0, 0);
     let duration = 0.0;
