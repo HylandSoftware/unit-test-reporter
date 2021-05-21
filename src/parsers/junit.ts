@@ -10,11 +10,16 @@ export default class JunitParser extends UnitTestResultParser {
     const [filename, lineno] = this.getLocation(stacktrace);
 
     const sanitizedFilename = this.sanitizePath(filename);
-    const message = testcase.failure
-      .split('\n')
-      .filter((s: string) => s.trim().length > 0)
-      .slice(0, 2)
-      .join('\n');
+    let message = '';
+    if (typeof (testcase.failure) === 'string') {
+      message = testcase.failure
+        .split('\n')
+        .filter((s: string) => s.trim().length > 0)
+        .slice(0, 2)
+        .join('\n');
+    } else if (typeof(testcase.failure) === 'object' && testcase.failure.message){
+      message = testcase.failure.message
+    }
     const classname = testcase.classname;
     const methodname = testcase.name;
 
