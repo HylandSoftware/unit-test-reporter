@@ -147,14 +147,15 @@ class JunitParser extends parser_1.UnitTestResultParser {
         const [filename, lineno] = this.getLocation(stacktrace);
         const sanitizedFilename = this.sanitizePath(filename);
         let message = '';
-        if (typeof (testcase.failure) === 'string') {
+        if (typeof testcase.failure === 'string') {
             message = testcase.failure
                 .split('\n')
                 .filter((s) => s.trim().length > 0)
                 .slice(0, 2)
                 .join('\n');
         }
-        else if (typeof (testcase.failure) === 'object' && testcase.failure.message) {
+        else if (typeof testcase.failure === 'object' &&
+            testcase.failure.message) {
             message = testcase.failure.message;
         }
         const classname = testcase.classname;
@@ -191,7 +192,9 @@ class JunitParser extends parser_1.UnitTestResultParser {
             explicitArray: false,
         });
         // Either top level test suites or top level test suite.
-        const testRuns = parsedXml.hasOwnProperty('testsuites') ? parsedXml['testsuites'] : parsedXml;
+        const testRuns = parsedXml.hasOwnProperty('testsuites')
+            ? parsedXml['testsuites']
+            : parsedXml;
         const testSuites = this.getTestSuites(testRuns);
         let allResults = new test_result_1.TestResultCounts(0, 0, 0, 0, 0, 0);
         let duration = 0.0;

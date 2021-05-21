@@ -59,7 +59,7 @@ test('Error: testcase.failure.split is not a function', async () => {
 
   expect(results.resultCounts.failed).toBe(2);
   expect(results.annotations[0].message).toBe('assert 1 == 0');
-  expect(results.annotations[0].message).toBe('assert 1 == 0');
+  expect(results.annotations[1].message).toBe('assert 1 == 0');
 });
 
 test('Stand alone test suite', async () => {
