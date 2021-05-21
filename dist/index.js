@@ -146,11 +146,17 @@ class JunitParser extends parser_1.UnitTestResultParser {
         const stacktrace = testcase.failure.toString().trim().substring(0, 65536);
         const [filename, lineno] = this.getLocation(stacktrace);
         const sanitizedFilename = this.sanitizePath(filename);
-        const message = testcase.failure
-            .split('\n')
-            .filter((s) => s.trim().length > 0)
-            .slice(0, 2)
-            .join('\n');
+        let message = '';
+        if (typeof (testcase.failure) === 'string') {
+            message = testcase.failure
+                .split('\n')
+                .filter((s) => s.trim().length > 0)
+                .slice(0, 2)
+                .join('\n');
+        }
+        else if (typeof (testcase.failure) === 'object' && testcase.failure.message) {
+            message = testcase.failure.message;
+        }
         const classname = testcase.classname;
         const methodname = testcase.name;
         return new annotation_1.Annotation(sanitizedFilename, lineno, lineno, 0, 0, 'failure', `Failed test ${methodname} in ${classname}`, message, stacktrace);
@@ -184,8 +190,9 @@ class JunitParser extends parser_1.UnitTestResultParser {
             mergeAttrs: true,
             explicitArray: false,
         });
-        const testRun = parsedXml['testsuites'];
-        const testSuites = this.getTestSuites(testRun);
+        // Either top level test suites or top level test suite.
+        const testRuns = parsedXml.hasOwnProperty('testsuites') ? parsedXml['testsuites'] : parsedXml;
+        const testSuites = this.getTestSuites(testRuns);
         let allResults = new test_result_1.TestResultCounts(0, 0, 0, 0, 0, 0);
         let duration = 0.0;
         for (const testSuite of testSuites) {
@@ -682,6 +689,7 @@ exports.getInput = getInput;
  */
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 function setOutput(name, value) {
+    process.stdout.write(os.EOL);
     command_1.issueCommand('set-output', { name }, value);
 }
 exports.setOutput = setOutput;

@@ -11,14 +11,17 @@ export default class JunitParser extends UnitTestResultParser {
 
     const sanitizedFilename = this.sanitizePath(filename);
     let message = '';
-    if (typeof (testcase.failure) === 'string') {
+    if (typeof testcase.failure === 'string') {
       message = testcase.failure
         .split('\n')
         .filter((s: string) => s.trim().length > 0)
         .slice(0, 2)
         .join('\n');
-    } else if (typeof(testcase.failure) === 'object' && testcase.failure.message){
-      message = testcase.failure.message
+    } else if (
+      typeof testcase.failure === 'object' &&
+      testcase.failure.message
+    ) {
+      message = testcase.failure.message;
     }
     const classname = testcase.classname;
     const methodname = testcase.name;
@@ -72,8 +75,10 @@ export default class JunitParser extends UnitTestResultParser {
     });
 
     // Either top level test suites or top level test suite.
-    const testRuns = parsedXml.hasOwnProperty('testsuites') ? parsedXml['testsuites'] : parsedXml;
-   
+    const testRuns = parsedXml.hasOwnProperty('testsuites')
+      ? parsedXml['testsuites']
+      : parsedXml;
+
     const testSuites = this.getTestSuites(testRuns);
 
     let allResults = new TestResultCounts(0, 0, 0, 0, 0, 0);

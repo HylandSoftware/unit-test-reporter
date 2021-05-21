@@ -49,7 +49,11 @@ test('parse jest junit failue', async () => {
 });
 
 test('Error: testcase.failure.split is not a function', async () => {
-  var testPath = path.join('__tests__', 'junit', 'testcase.failure.split-not-function.xml');
+  var testPath = path.join(
+    '__tests__',
+    'junit',
+    'testcase.failure.split-not-function.xml'
+  );
 
   var results = await new junitParser().readResults(testPath);
 
