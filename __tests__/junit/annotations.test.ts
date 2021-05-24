@@ -47,3 +47,26 @@ test('parse jest junit failue', async () => {
     `C:/code/gitweb/libs/users/src/lib/users/user-form/component.spec.ts`
   );
 });
+
+test('Error: testcase.failure.split is not a function', async () => {
+  var testPath = path.join(
+    '__tests__',
+    'junit',
+    'testcase.failure.split-not-function.xml'
+  );
+
+  var results = await new junitParser().readResults(testPath);
+
+  expect(results.resultCounts.failed).toBe(2);
+  expect(results.annotations[0].message).toBe('assert 1 == 0');
+  expect(results.annotations[1].message).toBe('assert 1 == 0');
+});
+
+test('Stand alone test suite', async () => {
+  var testPath = path.join('__tests__', 'junit', 'standalone_testsuite.xml');
+
+  var results = await new junitParser().readResults(testPath);
+
+  expect(results.resultCounts.total).toBe(2);
+  expect(results.resultCounts.passed).toBe(2);
+});
