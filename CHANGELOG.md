@@ -1,3 +1,10 @@
+# [1.2.0](https://github.com/HylandSoftware/unit-test-reporter/compare/v1.1.1...v1.2.0) (2021-07-20)
+
+
+### Features
+
+* update deps to latest / fix breaking changes on update ([#58](https://github.com/HylandSoftware/unit-test-reporter/issues/58)) ([6893fe5](https://github.com/HylandSoftware/unit-test-reporter/commit/6893fe5915dfb8f60bdb7f0b91567f50a7ce1b38))
+
 ## [1.1.1](https://github.com/HylandSoftware/unit-test-reporter/compare/v1.1.0...v1.1.1) (2021-04-06)
 
 
