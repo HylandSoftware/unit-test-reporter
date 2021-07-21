@@ -16,7 +16,7 @@ inputs:
     description: 'max number of failed tests to include'
     required: false
     default: "30"
-  reportTitle:
+  report-title:
     description: "Report title"
     required: false
     default: "Test Report"

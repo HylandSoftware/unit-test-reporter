@@ -18,22 +18,18 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
-        
-    - uses: ./
-      with: 
-        path: 'test-resuls/trx.xml'
-        reportType: 'trx'
-        access-token: ${{secrets.GITHUB_TOKEN}}
-    
+          
     - uses: ./
       with: 
         path: 'test-results/nunit.xml'
+        report-title: 'nunit'
         access-token: ${{secrets.GITHUB_TOKEN}}
 
     - uses: ./
       with: 
         path: 'test-results/not-executed.trx'
         reportType: 'trx'
+        report-title: 'trx-not-executed'
         access-token: ${{secrets.GITHUB_TOKEN}}
 
   release:
