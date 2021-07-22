@@ -1,6 +1,6 @@
 {
   "name": "unit-test-reporter",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "private": true,
   "description": "Action to add nunit tests results ",
   "main": "lib/main.js",

@@ -1,3 +1,10 @@
+## [1.2.1](https://github.com/HylandSoftware/unit-test-reporter/compare/v1.2.0...v1.2.1) (2021-07-22)
+
+
+### Bug Fixes
+
+* fix report title not uploading correctly ([#59](https://github.com/HylandSoftware/unit-test-reporter/issues/59)) ([535ba17](https://github.com/HylandSoftware/unit-test-reporter/commit/535ba174cdfb3c8b5f5a770ece5ef7643b390778))
+
 # [1.2.0](https://github.com/HylandSoftware/unit-test-reporter/compare/v1.1.1...v1.2.0) (2021-07-20)
 
 
