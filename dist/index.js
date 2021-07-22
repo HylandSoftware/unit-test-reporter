@@ -59,7 +59,7 @@ async function uploadResults(accessToken, title, numFailures, results) {
     const pr = context.payload.pull_request;
     await octokit.rest.checks.create({
         head_sha: (pr && pr['head'] && pr['head'].sha) || context.sha,
-        name: 'Tests Report',
+        name: title,
         owner: context.repo.owner,
         repo: context.repo.repo,
         status: 'completed',
@@ -98,7 +98,7 @@ async function run() {
         const path = core_1.getInput('path');
         const numFailures = parseInt(core_1.getInput('numFailures'));
         const accessToken = core_1.getInput('access-token');
-        const title = core_1.getInput('reportTitle');
+        const title = core_1.getInput('report-title');
         const reportType = core_1.getInput('reportType');
         let parser = null;
         switch (reportType) {

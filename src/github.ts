@@ -44,7 +44,7 @@ export async function uploadResults(
   const pr = context.payload.pull_request;
   await octokit.rest.checks.create({
     head_sha: (pr && pr['head'] && pr['head'].sha) || context.sha,
-    name: 'Tests Report',
+    name: title,
     owner: context.repo.owner,
     repo: context.repo.repo,
     status: 'completed',
