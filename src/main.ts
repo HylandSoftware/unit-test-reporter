@@ -35,7 +35,7 @@ async function run(): Promise<void> {
       const results = await parser.readResults(path);
       uploadResults(accessToken, title, numFailures, results);
     }
-  } catch (error) {
+  } catch (error: any) {
     setFailed(error.message);
   }
 }
