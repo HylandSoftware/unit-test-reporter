@@ -1,3 +1,10 @@
+## [1.2.2](https://github.com/HylandSoftware/unit-test-reporter/compare/v1.2.1...v1.2.2) (2022-08-16)
+
+
+### Bug Fixes
+
+* Upgrade all dependencies to latest ([#103](https://github.com/HylandSoftware/unit-test-reporter/issues/103)) ([8f75aec](https://github.com/HylandSoftware/unit-test-reporter/commit/8f75aec9c3bc8ab4d13d67bfe0d1847a9516b6dd))
+
 ## [1.2.1](https://github.com/HylandSoftware/unit-test-reporter/compare/v1.2.0...v1.2.1) (2021-07-22)
 
 
