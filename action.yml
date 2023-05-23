@@ -21,7 +21,7 @@ inputs:
     required: false
     default: "Test Report"
 runs:
-  using: 'node12'
+  using: 'node16'
   main: 'dist/index.js'
 branding:
   icon: 'check'  
