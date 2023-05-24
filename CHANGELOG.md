@@ -1,3 +1,10 @@
+## [1.2.3](https://github.com/HylandSoftware/unit-test-reporter/compare/v1.2.2...v1.2.3) (2023-05-24)
+
+
+### Bug Fixes
+
+* update Node to 16 ([#210](https://github.com/HylandSoftware/unit-test-reporter/issues/210)) ([a465db8](https://github.com/HylandSoftware/unit-test-reporter/commit/a465db804366eaa5d87a7d86d96a3c00723f0447))
+
 ## [1.2.2](https://github.com/HylandSoftware/unit-test-reporter/compare/v1.2.1...v1.2.2) (2022-08-16)
 
 
