@@ -1,3 +1,15 @@
+# [3.0.0](https://github.com/HylandSoftware/unit-test-reporter/compare/v2.0.0...v3.0.0) (2024-05-08)
+
+
+### Features
+
+* update all packages and runtime to node 20 ([#253](https://github.com/HylandSoftware/unit-test-reporter/issues/253)) ([8e25aa3](https://github.com/HylandSoftware/unit-test-reporter/commit/8e25aa34516eb2fee7e0193824850438b41d8293))
+
+
+### BREAKING CHANGES
+
+* updates the node runtime and a number of libraries.  This should not have an impact downstream, as node16 was already deprecated and warning runners of impending breakage, but marking the update as breaking just in case.
+
 ## [1.2.3](https://github.com/HylandSoftware/unit-test-reporter/compare/v1.2.2...v1.2.3) (2023-05-24)
 
 
