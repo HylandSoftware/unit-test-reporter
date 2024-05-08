@@ -1,5 +1,5 @@
 import { parseStringPromise } from 'xml2js';
-import { Annotation } from '../types/annotation';
+import { Annotation, AnnotationLevel } from '../types/annotation';
 import { TestResult, TestResultCounts } from '../types/test-result';
 import { UnitTestResultParser } from './parser';
 
@@ -47,33 +47,45 @@ export default class TrxParser extends UnitTestResultParser {
       const sanitizedFilename = this.sanitizePath(filename);
       const message = errorInfo.Message;
 
+      let testOutcome: AnnotationLevel = AnnotationLevel.Notice;
+      switch (testResult.outcome) {
+        case 'Failed':
+          testOutcome = AnnotationLevel.Failure;
+          break;
+        case 'Warning':
+          testOutcome = AnnotationLevel.Warning;
+          break;
+      }
+
       return new Annotation(
         sanitizedFilename,
         lineno,
         lineno,
         0,
         0,
-        testResult.outcome === 'Failed'
-          ? 'failure'
-          : testResult.outcome === 'Warning'
-          ? 'warning'
-          : 'notice',
+        testOutcome,
         `Failed test ${testResult.testName}`,
         message,
         stackTrace.substring(0, 65536)
       );
     } else {
+      let testOutcome: AnnotationLevel = AnnotationLevel.Notice;
+      switch (testResult.outcome) {
+        case 'Failed':
+          testOutcome = AnnotationLevel.Failure;
+          break;
+        case 'Warning':
+          testOutcome = AnnotationLevel.Warning;
+          break;
+      }
+
       return new Annotation(
         testResult.testName,
         0,
         0,
         0,
         0,
-        testResult.outcome === 'Failed'
-          ? 'failure'
-          : testResult.outcome === 'Warning'
-          ? 'warning'
-          : 'notice',
+        testOutcome,
         testResult.testName,
         testResult.Output.StdOut,
         ''

@@ -1,5 +1,5 @@
 import { parseStringPromise } from 'xml2js';
-import { Annotation } from '../types/annotation';
+import { Annotation, AnnotationLevel } from '../types/annotation';
 import { TestResult, TestResultCounts } from '../types/test-result';
 import { UnitTestResultParser } from './parser';
 
@@ -27,7 +27,7 @@ export default class NunitParser extends UnitTestResultParser {
       lineno,
       0,
       0,
-      'failure',
+      AnnotationLevel.Failure,
       `Failed test ${methodname} in ${classname}`,
       message,
       stacktrace
